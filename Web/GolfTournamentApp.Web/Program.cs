@@ -34,11 +34,11 @@
 
         private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDbContext>(
+            services.AddDbContext<GolfTournamentDbContext>(
                 options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
-                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<GolfTournamentDbContext>();
 
             services.Configure<CookiePolicyOptions>(
                 options =>
@@ -72,7 +72,7 @@
             // Seed data on application startup
             using (var serviceScope = app.Services.CreateScope())
             {
-                var dbContext = serviceScope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                var dbContext = serviceScope.ServiceProvider.GetRequiredService<GolfTournamentDbContext>();
                 dbContext.Database.Migrate();
                 new ApplicationDbContextSeeder().SeedAsync(dbContext, serviceScope.ServiceProvider).GetAwaiter().GetResult();
             }
