@@ -1,6 +1,21 @@
 ﻿namespace GolfTournamentApp.Data.Models
 {
-    public class PlayerNews
+    using System;
+
+    using GolfTournamentApp.Data.Common.Models;
+
+    public class PlayerNews : IDeletableEntity
     {
+        public int PlayerId { get; set; }
+
+        public virtual Player Player { get; set; }
+
+        public int? NewsId { get; set; }
+
+        public virtual News News { get; set; }
+
+        public bool IsDeleted { get; set; }
+
+        public DateTime? DeletedOn { get; set; }
     }
 }

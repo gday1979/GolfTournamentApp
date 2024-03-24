@@ -6,7 +6,11 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class Enum
+    public enum CategoryTournament
     {
+        PGA = 1,
+        EuropeanTour = 2,
+        FedExCup = 3,
+        SentenielCup = 4,
     }
 }

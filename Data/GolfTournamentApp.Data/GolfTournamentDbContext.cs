@@ -12,19 +12,37 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
+    public class GolfTournamentDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
-            typeof(ApplicationDbContext).GetMethod(
+            typeof(GolfTournamentDbContext).GetMethod(
                 nameof(SetIsDeletedQueryFilter),
                 BindingFlags.NonPublic | BindingFlags.Static);
 
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public GolfTournamentDbContext(DbContextOptions<GolfTournamentDbContext> options)
             : base(options)
         {
         }
 
         public DbSet<Setting> Settings { get; set; }
+
+        public DbSet<Tournament> Tournaments { get; set; }
+
+        public DbSet<Course> Courses { get; set; }
+
+        public DbSet<Player> Players { get; set; }
+
+        public DbSet<PlayerNews> PlayersNewses { get; set; }
+
+        public DbSet<News> Newses { get; set; }
+
+        public DbSet<CourseNews> CourseNewses { get; set; }
+
+        public DbSet<TournamentNews> TournamentNewses { get; set; }
+
+        public DbSet<GolfRanking> GolfRankings { get; set; }
+
+        public DbSet<Ranking> Rankings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
@@ -47,6 +65,13 @@
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<PlayerNews>()
+                .HasKey(pn => new { pn.PlayerId, pn.NewsId });
+            builder.Entity<TournamentNews>()
+                .HasKey(tn => new { tn.TournamentId, tn.NewsId });
+            builder.Entity<CourseNews>()
+                .HasKey(cn => new { cn.CourseId, cn.NewsId });
+
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
@@ -82,7 +107,27 @@
 
         // Applies configurations
         private void ConfigureUserIdentityRelations(ModelBuilder builder)
-             => builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+        {
+            builder.Entity<GolfTournamentUser>()
+                .HasMany(e => e.Roles)
+                .WithOne()
+                .HasForeignKey(e => e.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<GolfTournamentUser>()
+                .HasMany(e => e.Logins)
+                .WithOne()
+                .HasForeignKey(e => e.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+            builder.Entity<GolfTournamentUser>()
+                .HasMany(e => e.Claims)
+                .WithOne()
+                .HasForeignKey(e => e.UserId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+        }
 
         private void ApplyAuditInfoRules()
         {
