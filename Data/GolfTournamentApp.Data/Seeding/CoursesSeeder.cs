@@ -30,8 +30,8 @@
                 },
                 new Course
                 {
-                    Name = "Pebble Beach",
-                    City = "Pebble Beach",
+                    Name = "PebbleBeach",
+                    City = "PebbleBeach",
                     Country = "USA",
                     Designer = "Jack Neville",
                     Length = 6828,
@@ -39,8 +39,8 @@
                 },
                 new Course
                 {
-                    Name = "St. Andrews",
-                    City = "St. Andrews",
+                    Name = "St.Andrews",
+                    City = "St.Andrews",
                     Country = "Scotland",
                     Designer = "Old Tom Morris",
                     Length = 6721,
