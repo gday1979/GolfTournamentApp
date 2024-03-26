@@ -1,5 +1,6 @@
 ﻿namespace GolfTournamentApp.Services.Data.Cloudinary
 {
+    using GolfTournamentApp.Common;
     using Microsoft.Extensions.Configuration;
 
     public class CloudinaryHelper : ICloudinaryHelper

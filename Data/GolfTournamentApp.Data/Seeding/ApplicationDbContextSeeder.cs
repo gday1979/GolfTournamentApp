@@ -29,6 +29,7 @@
                               new SettingsSeeder(),
                               new PlayersSeeder(),
                               new CoursesSeeder(),
+                              new TournamentsSeeder(),
                           };
 
             foreach (var seeder in seeders)

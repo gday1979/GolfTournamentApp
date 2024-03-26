@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.435" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
@@ -21,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GolfTournamentApp.Data.Common\GolfTournamentApp.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\GolfTournamentApp.Data.Models\GolfTournamentApp.Data.Models.csproj" />
+    <ProjectReference Include="..\..\GolfTournamentApp.Common\GolfTournamentApp.Common.csproj" />
     <ProjectReference Include="..\..\Web\GolfTournamentApp.Web.ViewModels\GolfTournamentApp.Web.ViewModels.csproj" />
     <ProjectReference Include="..\GolfTournamentApp.Services.Mapping\GolfTournamentApp.Services.Mapping.csproj" />
   </ItemGroup>
