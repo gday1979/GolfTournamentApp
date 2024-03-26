@@ -1,9 +1,8 @@
 ﻿namespace GolfTournamentApp.Web.ViewModels.Settings
 {
+    using AutoMapper;
     using GolfTournamentApp.Data.Models;
     using GolfTournamentApp.Services.Mapping;
-
-    using AutoMapper;
 
     public class SettingViewModel : IMapFrom<Setting>, IHaveCustomMappings
     {
