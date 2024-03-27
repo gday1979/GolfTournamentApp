@@ -22,6 +22,8 @@
         public const string MaxFileSizeErrorMessage = "Maxium allowed file size is {0} megabytes";
         public const string DefaultDateTimeFormat = "dd/MM/yyyy HH:mm";
         public const string CloudinaryPrefix = "https://res.cloudinary.com/{0}/image/upload/";
+        public const int ImageMaxSizeMB = 10;
+
         public static readonly string[] AllowedImageExtensions = { "jpg", "jpeg", "png", "gif" };
     }
 }

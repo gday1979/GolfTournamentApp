@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\GolfTournamentApp.Data.Models\GolfTournamentApp.Data.Models.csproj" />
+    <ProjectReference Include="..\..\GolfTournamentApp.Common\GolfTournamentApp.Common.csproj" />
     <ProjectReference Include="..\..\Services\GolfTournamentApp.Services.Mapping\GolfTournamentApp.Services.Mapping.csproj" />
   </ItemGroup>
 

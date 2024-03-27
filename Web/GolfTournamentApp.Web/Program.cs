@@ -9,6 +9,7 @@
     using GolfTournamentApp.Data.Repositories;
     using GolfTournamentApp.Data.Seeding;
     using GolfTournamentApp.Services.Data;
+    using GolfTournamentApp.Services.Data.Tournament;
     using GolfTournamentApp.Services.Mapping;
     using GolfTournamentApp.Services.Messaging;
     using GolfTournamentApp.Web.ViewModels;
@@ -65,6 +66,7 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<ITournamentService, TournamentService>();
         }
 
         private static void Configure(WebApplication app)

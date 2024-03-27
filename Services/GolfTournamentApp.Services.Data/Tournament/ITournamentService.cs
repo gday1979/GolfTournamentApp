@@ -11,5 +11,9 @@
     public interface ITournamentService
     {
         Task<TournamentDetailsViewModel> CreateAsync(TournamentCreateInputModel tournamentCreateInputModel);
+
+        Task<int> GetByIdAsync(int id);
+
+        Task<TournamentEditViewModel> GetDetailsForEditAsync(int id);
     }
 }

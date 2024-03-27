@@ -24,12 +24,25 @@
                 {
                     Name = "PGA Championship",
                     Description = "The PGA",
-                    CategoryTournament = CategoryTournament.PGA,      StartDate = DateTime.UtcNow,
+                    CategoryTournament = CategoryTournament.PGA,
+                    StartDate = DateTime.UtcNow,
                     EndDate = DateTime.UtcNow.AddDays(4),
                     Location = "Kiawah Island Golf Resort, South Carolina, USA",
                     Organizer = "PGA of America",
                     Prize = 11000000,
                     Image = "https://kiawahresort.com/wp-content/uploads/2018/10/6-green.jpg",
+                },
+                new Tournament
+                {
+                    Name = "The Open Championship",
+                    Description = "The Open",
+                    CategoryTournament = CategoryTournament.PGA,
+                    StartDate = DateTime.UtcNow,
+                    EndDate = DateTime.UtcNow.AddDays(4),
+                    Location = "Royal St George's Golf Club, Sandwich, Kent, England",
+                    Organizer = "The R&A",
+                    Prize = 10000000,
+                    Image = "https://www.royalstgeorges.com/images/royal-st-georges-golf-club-1.jpg",
                 },
             };
            foreach (var tournament in tournamemts)
