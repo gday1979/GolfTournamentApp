@@ -108,20 +108,20 @@
         // Applies configurations
         private void ConfigureUserIdentityRelations(ModelBuilder builder)
         {
-            builder.Entity<GolfTournamentUser>()
+            builder.Entity<ApplicationUser>()
                 .HasMany(e => e.Roles)
                 .WithOne()
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.Entity<GolfTournamentUser>()
+            builder.Entity<ApplicationUser>()
                 .HasMany(e => e.Logins)
                 .WithOne()
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
-            builder.Entity<GolfTournamentUser>()
+            builder.Entity<ApplicationUser>()
                 .HasMany(e => e.Claims)
                 .WithOne()
                 .HasForeignKey(e => e.UserId)

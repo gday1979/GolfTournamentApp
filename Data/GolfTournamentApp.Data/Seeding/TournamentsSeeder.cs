@@ -34,7 +34,7 @@
                 },
                 new Tournament
                 {
-                    Name = "The Open Championship",
+                    Name = "The Open ",
                     Description = "The Open",
                     CategoryTournament = CategoryTournament.PGA,
                     StartDate = DateTime.UtcNow,
