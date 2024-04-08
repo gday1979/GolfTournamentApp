@@ -6,7 +6,10 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal class StattusCodes
+    public class StattusCodes
     {
+        public const int NotFound = 404;
+
+        public const int InternalServerError = 500;
     }
 }

@@ -6,7 +6,12 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal interface IApplicationCloudinary
+    using Microsoft.AspNetCore.Http;
+
+    public interface IApplicationCloudinary
     {
+        Task<string> UploadFileAsunc(IFormFile file);
+
+        Task DeleteFile(string url);
     }
 }

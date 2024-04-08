@@ -6,7 +6,8 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    internal interface ICloudinaryHelper
+    public interface ICloudinaryHelper
     {
+        string GetPrefix();
     }
 }

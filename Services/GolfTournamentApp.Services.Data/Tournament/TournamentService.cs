@@ -15,5 +15,15 @@
         {
             throw new System.NotImplementedException();
         }
+
+        public Task<int> GetByIdAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<TournamentEditViewModel> GetDetailsForEditAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
