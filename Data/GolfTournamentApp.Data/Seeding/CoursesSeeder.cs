@@ -26,25 +26,25 @@
                     Country = "USA",
                     Designer = "Alister MacKenzie",
                     Length = 7435,
-                    Image = "https://media.gettyimages.com/id/469054546/photo/augusta-ga-tiger-woods-of-the-united-states-takes-a-free-drop-on-the-second-hole-during-the.jpg?s=612x612&w=0&k=20&c=rp6KOooIEMu5uDpHUbABaH2k3DH4GgaP0pu0qvU0HoQ=",
+                    ImageUrl = "https://media.gettyimages.com/id/469054546/photo/augusta-ga-tiger-woods-of-the-united-states-takes-a-free-drop-on-the-second-hole-during-the.jpg?s=612x612&w=0&k=20&c=rp6KOooIEMu5uDpHUbABaH2k3DH4GgaP0pu0qvU0HoQ=",
                 },
                 new Course
                 {
                     Name = "PebbleBeach",
-                    City = "PebbleBeach",
+                    City = "LosAlamos",
                     Country = "USA",
                     Designer = "Jack Neville",
                     Length = 6828,
-                    Image = "https://media.gettyimages.com/id/1155742847/photo/pebble-beach-california-adri-arnaus-of-spain-prepares-to-take-a-free-drop-on-the-ninth-hole.jpg?s=612x612&w=0&k=20&c=-aCJ5GJiMAyKlUTWmSJ4NpMImq1S4Im2sMiIUNlU18c=",
+                    ImageUrl = "https://media.gettyimages.com/id/1155742847/photo/pebble-beach-california-adri-arnaus-of-spain-prepares-to-take-a-free-drop-on-the-ninth-hole.jpg?s=612x612&w=0&k=20&c=-aCJ5GJiMAyKlUTWmSJ4NpMImq1S4Im2sMiIUNlU18c=",
                 },
                 new Course
                 {
-                    Name = "St.Andrews",
-                    City = "St.Andrews",
+                    Name = "StAndrews",
+                    City = "Edinburgh",
                     Country = "Scotland",
-                    Designer = "Old Tom Morris",
+                    Designer = "OldTomMorris",
                     Length = 6721,
-                    Image = "https://www.caddybytes.com/virtualtours/St%20Andrews1/slides/Valley_ofSin.jpg",
+                    ImageUrl = "https://www.caddybytes.com/virtualtours/St%20Andrews1/slides/Valley_ofSin.jpg",
                 },
             };
             foreach (var course in courses)
@@ -56,7 +56,7 @@
                     Country = course.Country,
                     Designer = course.Designer,
                     Length = course.Length,
-                    Image = course.Image,
+                    ImageUrl = course.ImageUrl,
                 });
                 await dbContext.SaveChangesAsync();
             }

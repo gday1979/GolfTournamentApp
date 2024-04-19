@@ -11,7 +11,6 @@
     {
         public Course()
         {
-            this.Tournaments = new HashSet<Tournament>();
             this.Players = new HashSet<Player>();
         }
 
@@ -28,7 +27,7 @@
         public string City { get; set; }
 
         [Required]
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
 
         [Required]
         [MaxLength(MaxLength)]
@@ -37,8 +36,6 @@
         [Required]
         [MaxLength(DesignerMaxLength)]
         public string Designer { get; set; }
-
-        public virtual ICollection<Tournament> Tournaments { get; set; }
 
         public virtual ICollection<Player> Players { get; set; }
     }

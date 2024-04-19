@@ -29,8 +29,6 @@
 
         public virtual ICollection<PlayerNews> PlayersNewses { get; set; }
 
-        public virtual ICollection<CourseNews> CourseNews { get; set; }
-
         public virtual ICollection<TournamentNews> TournamentsNewses { get; set; }
     }
 }

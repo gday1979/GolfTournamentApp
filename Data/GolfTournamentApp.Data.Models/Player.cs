@@ -15,7 +15,6 @@
             this.PlayersNewses = new HashSet<PlayerNews>();
             this.Courses = new HashSet<Course>();
             this.Tournaments = new HashSet<Tournament>();
-            this.GolfRankings = new HashSet<GolfRanking>();
         }
 
         [Required]
@@ -39,7 +38,5 @@
         public virtual ICollection<Course> Courses { get; set; }
 
         public virtual ICollection<Tournament> Tournaments { get; set; }
-
-        public virtual ICollection<GolfRanking> GolfRankings { get; set; }
     }
 }

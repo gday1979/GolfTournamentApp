@@ -16,10 +16,7 @@
     {
         public Tournament()
         {
-            this.Courses = new HashSet<Course>();
             this.Players = new HashSet<Player>();
-            this.Newses = new HashSet<News>();
-            this.GolfRankings = new HashSet<GolfRanking>();
         }
 
         [Required]
@@ -40,22 +37,13 @@
         public string Location { get; set; }
 
         [Required]
-        public string Organizer { get; set; }
-
-        [Required]
         public int Prize { get; set; }
 
-        public string Image { get; set; }
+        public string ImageUrl { get; set; }
 
         [Required]
         public CategoryTournament CategoryTournament { get; set; }
 
-        public virtual ICollection<Course> Courses { get; set; }
-
         public virtual ICollection<Player> Players { get; set; }
-
-        public virtual ICollection<News> Newses { get; set; }
-
-        public virtual ICollection<GolfRanking> GolfRankings { get; set; }
     }
 }

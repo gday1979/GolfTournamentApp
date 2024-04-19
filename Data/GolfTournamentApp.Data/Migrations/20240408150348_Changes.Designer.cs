@@ -4,6 +4,7 @@ using GolfTournamentApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GolfTournamentApp.Data.Migrations
 {
     [DbContext(typeof(GolfTournamentDbContext))]
-    partial class GolfTournamentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240408150348_Changes")]
+    partial class Changes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,6 +38,21 @@ namespace GolfTournamentApp.Data.Migrations
                     b.HasIndex("PlayersId");
 
                     b.ToTable("CoursePlayer");
+                });
+
+            modelBuilder.Entity("CourseTournament", b =>
+                {
+                    b.Property<int>("CoursesId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TournamentsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CoursesId", "TournamentsId");
+
+                    b.HasIndex("TournamentsId");
+
+                    b.ToTable("CourseTournament");
                 });
 
             modelBuilder.Entity("GolfTournamentApp.Data.Models.ApplicationRole", b =>
@@ -194,7 +212,7 @@ namespace GolfTournamentApp.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -220,7 +238,35 @@ namespace GolfTournamentApp.Data.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("GolfTournamentApp.Data.Models.CoursePlayer", b =>
+            modelBuilder.Entity("GolfTournamentApp.Data.Models.CourseNews", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("NewsId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("CourseId", "NewsId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("NewsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CourseNewses");
+                });
+
+            modelBuilder.Entity("GolfTournamentApp.Data.Models.GolfRanking", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -228,11 +274,14 @@ namespace GolfTournamentApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("CourseId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
@@ -240,13 +289,23 @@ namespace GolfTournamentApp.Data.Migrations
                     b.Property<int>("PlayerId")
                         .HasColumnType("int");
 
+                    b.Property<int>("RankingId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TournamentId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("CoursesPlayers");
+                    b.HasIndex("RankingId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.ToTable("GolfRankings");
                 });
 
             modelBuilder.Entity("GolfTournamentApp.Data.Models.GolfTournamentUser", b =>
@@ -353,6 +412,9 @@ namespace GolfTournamentApp.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int?>("TournamentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
@@ -360,6 +422,8 @@ namespace GolfTournamentApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("TournamentId");
 
                     b.HasIndex("UserId");
 
@@ -405,14 +469,9 @@ namespace GolfTournamentApp.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("RankingId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
-
-                    b.HasIndex("RankingId");
 
                     b.ToTable("Players");
                 });
@@ -453,25 +512,19 @@ namespace GolfTournamentApp.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Points")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Position")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -533,7 +586,7 @@ namespace GolfTournamentApp.Data.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImageUrl")
+                    b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
@@ -547,6 +600,10 @@ namespace GolfTournamentApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Organizer")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Prize")
                         .HasColumnType("int");
@@ -585,35 +642,6 @@ namespace GolfTournamentApp.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("TournamentNewses");
-                });
-
-            modelBuilder.Entity("GolfTournamentApp.Data.Models.TournamentPlayer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("PlayerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TournamentId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PlayerId");
-
-                    b.HasIndex("TournamentId");
-
-                    b.ToTable("TournamentsPlayers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -767,7 +795,22 @@ namespace GolfTournamentApp.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("GolfTournamentApp.Data.Models.CoursePlayer", b =>
+            modelBuilder.Entity("CourseTournament", b =>
+                {
+                    b.HasOne("GolfTournamentApp.Data.Models.Course", null)
+                        .WithMany()
+                        .HasForeignKey("CoursesId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("GolfTournamentApp.Data.Models.Tournament", null)
+                        .WithMany()
+                        .HasForeignKey("TournamentsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("GolfTournamentApp.Data.Models.CourseNews", b =>
                 {
                     b.HasOne("GolfTournamentApp.Data.Models.Course", "Course")
                         .WithMany()
@@ -775,19 +818,52 @@ namespace GolfTournamentApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("GolfTournamentApp.Data.Models.News", "News")
+                        .WithMany("CourseNews")
+                        .HasForeignKey("NewsId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("GolfTournamentApp.Data.Models.GolfTournamentUser", "User")
+                        .WithMany("CourseNews")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Course");
+
+                    b.Navigation("News");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("GolfTournamentApp.Data.Models.GolfRanking", b =>
+                {
                     b.HasOne("GolfTournamentApp.Data.Models.Player", "Player")
-                        .WithMany()
+                        .WithMany("GolfRankings")
                         .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Course");
+                    b.HasOne("GolfTournamentApp.Data.Models.Ranking", "Ranking")
+                        .WithMany()
+                        .HasForeignKey("RankingId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("GolfTournamentApp.Data.Models.Tournament", null)
+                        .WithMany("GolfRankings")
+                        .HasForeignKey("TournamentId");
 
                     b.Navigation("Player");
+
+                    b.Navigation("Ranking");
                 });
 
             modelBuilder.Entity("GolfTournamentApp.Data.Models.News", b =>
                 {
+                    b.HasOne("GolfTournamentApp.Data.Models.Tournament", null)
+                        .WithMany("Newses")
+                        .HasForeignKey("TournamentId");
+
                     b.HasOne("GolfTournamentApp.Data.Models.GolfTournamentUser", "User")
                         .WithMany("Newses")
                         .HasForeignKey("UserId")
@@ -795,13 +871,6 @@ namespace GolfTournamentApp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("GolfTournamentApp.Data.Models.Player", b =>
-                {
-                    b.HasOne("GolfTournamentApp.Data.Models.Ranking", null)
-                        .WithMany("Players")
-                        .HasForeignKey("RankingId");
                 });
 
             modelBuilder.Entity("GolfTournamentApp.Data.Models.PlayerNews", b =>
@@ -852,25 +921,6 @@ namespace GolfTournamentApp.Data.Migrations
                     b.Navigation("Tournament");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("GolfTournamentApp.Data.Models.TournamentPlayer", b =>
-                {
-                    b.HasOne("GolfTournamentApp.Data.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("GolfTournamentApp.Data.Models.Tournament", "Tournament")
-                        .WithMany()
-                        .HasForeignKey("TournamentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Player");
-
-                    b.Navigation("Tournament");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -964,6 +1014,8 @@ namespace GolfTournamentApp.Data.Migrations
                 {
                     b.Navigation("Claims");
 
+                    b.Navigation("CourseNews");
+
                     b.Navigation("Logins");
 
                     b.Navigation("Newses");
@@ -977,6 +1029,8 @@ namespace GolfTournamentApp.Data.Migrations
 
             modelBuilder.Entity("GolfTournamentApp.Data.Models.News", b =>
                 {
+                    b.Navigation("CourseNews");
+
                     b.Navigation("PlayersNewses");
 
                     b.Navigation("TournamentsNewses");
@@ -984,12 +1038,16 @@ namespace GolfTournamentApp.Data.Migrations
 
             modelBuilder.Entity("GolfTournamentApp.Data.Models.Player", b =>
                 {
+                    b.Navigation("GolfRankings");
+
                     b.Navigation("PlayersNewses");
                 });
 
-            modelBuilder.Entity("GolfTournamentApp.Data.Models.Ranking", b =>
+            modelBuilder.Entity("GolfTournamentApp.Data.Models.Tournament", b =>
                 {
-                    b.Navigation("Players");
+                    b.Navigation("GolfRankings");
+
+                    b.Navigation("Newses");
                 });
 #pragma warning restore 612, 618
         }

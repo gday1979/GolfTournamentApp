@@ -10,13 +10,13 @@ namespace GolfTournamentApp.Web
     using GolfTournamentApp.Data.Repositories;
     using GolfTournamentApp.Data.Seeding;
     using GolfTournamentApp.Services.Data;
+    using GolfTournamentApp.Services.Data.Course;
     using GolfTournamentApp.Services.Data.Tournament;
     using GolfTournamentApp.Services.Mapping;
     using GolfTournamentApp.Services.Messaging;
     using GolfTournamentApp.Web.ViewModels;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Http;
-    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -31,8 +31,6 @@ namespace GolfTournamentApp.Web
             var connectionString = builder.Configuration.GetConnectionString("GolfTournamentDbContextConnection") ?? throw new InvalidOperationException("Connection string 'GolfTournamentDbContextConnection' not found.");
 
             builder.Services.AddDbContext<GolfTournamentDbContext>(options => options.UseSqlServer(connectionString));
-
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<GolfTournamentDbContext>();
             ConfigureServices(builder.Services, builder.Configuration);
             var app = builder.Build();
             Configure(app);
@@ -73,6 +71,7 @@ namespace GolfTournamentApp.Web
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<ITournamentService, TournamentService>();
+            services.AddTransient<ICourseService, CourseService>();
         }
 
         private static void Configure(WebApplication app)

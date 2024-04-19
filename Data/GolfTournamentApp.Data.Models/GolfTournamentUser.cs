@@ -21,7 +21,6 @@
 
             this.Newses = new HashSet<News>();
             this.PlayerNews = new HashSet<PlayerNews>();
-            this.CourseNews = new HashSet<CourseNews>();
             this.TournamentNews = new HashSet<TournamentNews>();
         }
 
@@ -46,8 +45,6 @@
         public virtual ICollection<News> Newses { get; set; }
 
         public virtual ICollection<PlayerNews> PlayerNews { get; set; }
-
-        public virtual ICollection<CourseNews> CourseNews { get; set; }
 
         public virtual ICollection<TournamentNews> TournamentNews { get; set; }
     }

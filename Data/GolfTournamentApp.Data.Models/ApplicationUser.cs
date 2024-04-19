@@ -3,6 +3,7 @@ namespace GolfTournamentApp.Data.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using GolfTournamentApp.Data.Common.Models;
 
@@ -33,5 +34,11 @@ namespace GolfTournamentApp.Data.Models
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
+
+        [MaxLength(15)]
+        public string FirstName { get; set; }
+
+        [MaxLength(15)]
+        public string LastName { get; set; }
     }
 }

@@ -24,6 +24,8 @@
         {
         }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public DbSet<Tournament> Tournaments { get; set; }
@@ -32,15 +34,15 @@
 
         public DbSet<Player> Players { get; set; }
 
+        public DbSet<TournamentPlayer> TournamentsPlayers { get; set; }
+
+        public DbSet<CoursePlayer> CoursesPlayers { get; set; }
+
         public DbSet<PlayerNews> PlayersNewses { get; set; }
 
         public DbSet<News> Newses { get; set; }
 
-        public DbSet<CourseNews> CourseNewses { get; set; }
-
         public DbSet<TournamentNews> TournamentNewses { get; set; }
-
-        public DbSet<GolfRanking> GolfRankings { get; set; }
 
         public DbSet<Ranking> Rankings { get; set; }
 
@@ -69,8 +71,6 @@
                 .HasKey(pn => new { pn.PlayerId, pn.NewsId });
             builder.Entity<TournamentNews>()
                 .HasKey(tn => new { tn.TournamentId, tn.NewsId });
-            builder.Entity<CourseNews>()
-                .HasKey(cn => new { cn.CourseId, cn.NewsId });
 
             // Needed for Identity models configuration
             base.OnModelCreating(builder);

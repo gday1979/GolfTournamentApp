@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Mvc;
 
-    public class PlayerController : Controller
+    public class PlayerController : BaseController
     {
         public IActionResult Index()
         {
