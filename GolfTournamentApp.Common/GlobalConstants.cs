@@ -16,6 +16,10 @@
 
         public const string AdminPassword = "16051979";
 
+        public const string GolfAdminRoleName = "GolfAdmin";
+
+        public const string AdministrationAreaName = "Administration";
+
         public const string AdministratorFullName = "Zlatin";
 
         public const string AllowedExtensionsErrorMessage = "This photos extension is not allowed!";

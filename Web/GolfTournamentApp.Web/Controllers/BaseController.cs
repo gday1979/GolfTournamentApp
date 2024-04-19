@@ -3,7 +3,6 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
-    [Authorize(Roles = "User")]
     public class BaseController : Controller
     {
     }

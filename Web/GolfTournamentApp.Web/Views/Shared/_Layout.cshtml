@@ -33,15 +33,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Course</a>
                             </li>
-                            @if(this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                            @if(this.User.IsInRole(GlobalConstants.GolfAdminRoleName))
                             {
                                
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="News" asp-action="Index">News</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="TournamentNews" asp-action="Index">TournamentNews</a>
-                        </li>
+                             <li class="nav-item">
+                               <a class="nav-link text-dark" asp-area="" asp-controller="News" asp-action="Index">News</a>
+                             </li>
+                            <li class="nav-item">
+                               <a class="nav-link text-dark" asp-area="" asp-controller="TournamentNews" asp-action="Index">TournamentNews</a>
+                            </li>
                             }
                         }
                     </ul>

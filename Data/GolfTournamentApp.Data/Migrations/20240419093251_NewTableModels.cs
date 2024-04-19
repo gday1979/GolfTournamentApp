@@ -86,7 +86,7 @@ namespace GolfTournamentApp.Data.Migrations
                     CourseId = table.Column<int>(type: "int", nullable: false),
                     PlayerId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -114,7 +114,7 @@ namespace GolfTournamentApp.Data.Migrations
                     TournamentId = table.Column<int>(type: "int", nullable: false),
                     PlayerId = table.Column<int>(type: "int", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -220,7 +220,7 @@ namespace GolfTournamentApp.Data.Migrations
                 table: "Tournaments",
                 type: "nvarchar(max)",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: " ");
 
             migrationBuilder.AddColumn<int>(
                 name: "TournamentId",
@@ -236,7 +236,7 @@ namespace GolfTournamentApp.Data.Migrations
                     NewsId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -265,7 +265,7 @@ namespace GolfTournamentApp.Data.Migrations
                 columns: table => new
                 {
                     CoursesId = table.Column<int>(type: "int", nullable: false),
-                    TournamentsId = table.Column<int>(type: "int", nullable: false)
+                    TournamentsId = table.Column<int>(type: "int", nullable: false),
                 },
                 constraints: table =>
                 {
@@ -296,7 +296,7 @@ namespace GolfTournamentApp.Data.Migrations
                     DeletedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     ModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    TournamentId = table.Column<int>(type: "int", nullable: true)
+                    TournamentId = table.Column<int>(type: "int", nullable: true),
                 },
                 constraints: table =>
                 {
