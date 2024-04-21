@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
+    <header class="text-bg-primary" >
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@GlobalConstants.SystemName</a>
@@ -33,7 +33,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Course" asp-action="Index">Course</a>
                             </li>
-                            @if(this.User.IsInRole(GlobalConstants.GolfAdminRoleName))
+                            @if(this.User.IsInRole(GlobalConstants.AdministratorRoleName))
                             {
                                
                              <li class="nav-item">

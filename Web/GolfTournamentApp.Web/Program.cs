@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using GolfTournamentApp.Data;
 namespace GolfTournamentApp.Web
 {
     using System;
@@ -34,8 +31,6 @@ namespace GolfTournamentApp.Web
             var connectionString = builder.Configuration.GetConnectionString("GolfTournamentDbContextConnection") ?? throw new InvalidOperationException("Connection string 'GolfTournamentDbContextConnection' not found.");
 
             builder.Services.AddDbContext<GolfTournamentDbContext>(options => options.UseSqlServer(connectionString));
-
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<GolfTournamentDbContext>();
 
             ConfigureServices(builder.Services, builder.Configuration);
             var app = builder.Build();

@@ -11,9 +11,15 @@
         public const string NameLengthError = "Name must be between {2} and {1} symbols";
         public const string EmptyFieldLengthError = "Please enter the field.";
 
-        public static class Tournament
+        public class Tournament
         {
             public const string NameDisplayName = "Tournament Name";
+        }
+
+        public class Course
+        {
+            public const string NameDisplayName = "Course Name";
+            public const int NameCountry = 15;
         }
     }
 }
