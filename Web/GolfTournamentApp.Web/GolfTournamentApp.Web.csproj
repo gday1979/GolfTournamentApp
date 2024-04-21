@@ -47,4 +47,8 @@
     <ProjectReference Include="..\GolfTournamentApp.Web.Infrastructure\GolfTournamentApp.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\GolfTournamentApp.Web.ViewModels\GolfTournamentApp.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Account\Manage\" />
+  </ItemGroup>
 </Project>

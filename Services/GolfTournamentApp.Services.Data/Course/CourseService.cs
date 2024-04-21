@@ -6,7 +6,13 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using GolfTournamentApp.Web.ViewModels.Course;
+
     public class CourseService : ICourseService
     {
+        Task ICourseService.CreateAsync(CourseFormViewModel course)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

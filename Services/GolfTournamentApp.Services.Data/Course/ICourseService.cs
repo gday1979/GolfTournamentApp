@@ -6,7 +6,10 @@
     using System.Text;
     using System.Threading.Tasks;
 
+    using GolfTournamentApp.Web.ViewModels.Course;
+
     public interface ICourseService
     {
+        Task CreateAsync(CourseFormViewModel course);
     }
 }
